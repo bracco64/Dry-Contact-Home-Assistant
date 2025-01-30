@@ -27,3 +27,5 @@ Funzionamento:  Il contatto del relè è normalmente chiuso e quando la tensione
 E' possibile attivare il relè manualmente da web oppure HA anche se la tensione della batteria non ha ancora raggiunto la
 soglia alta (funzionamento manuale). In questo stato la soglia bassa non interviene. Quando la batteria raggiunge la soglia alta lo stato manuale viene resettato e le soglie vengono riattivate per il normale funzionamento. Se la batteria non dovesse raggiungere nello stato manuale la soglia alta, sarà la TENSIONE DI CUTOFF ad intervenire e sesettare lo stato manuale e riportarlo al funzionamento automatico.
 
+Calibrazione: Per allineare la lettura della tensione del Dry Contact rispetto alla tensione letta sul display della batteria
+agire sul parametro. il valore 10 aumenta la lettura di 10 mV. sono ammessi anche valori negativi (-10).
