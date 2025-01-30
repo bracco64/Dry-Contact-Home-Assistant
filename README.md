@@ -16,8 +16,14 @@ Installare un broker MQTT in HA (mosquito)
 Il dispositivo pubblica i dati con il protocollo MQTT e dall'interfaccia di HA è possibile visualizzare
 e modificare le impostazioni.
 
+
 Alla prima accensione il dispositivo entrerà in modalita AP. Connettersi alla wifi generata
 (DryContactAP), selezionare la wifi alla quale si deve connettere, inserite i dati del server MQTT e salvare.
+
+![Screenshot 2025-01-30 151114](https://github.com/user-attachments/assets/af58bd3d-ebaa-4d13-8f47-f0ffa753abf7)
+![Screenshot 2025-01-30 151140](https://github.com/user-attachments/assets/678acf27-c2c5-4430-88f3-971afd9bd079)
+
+
 Al riavvio il dispositivo si connetterà alla Vs. rete Wifi e sul display apparirà l'indirizzo IP assegnato dal router.
 Collegarsi con un browser e settare i parametri "Tensione Alta, Tensione Bassa, Calibrazione, Tensione CutOff"
 
@@ -28,4 +34,7 @@ E' possibile attivare il relè manualmente da web oppure HA anche se la tensione
 soglia alta (funzionamento manuale). In questo stato la soglia bassa non interviene. Quando la batteria raggiunge la soglia alta lo stato manuale viene resettato e le soglie vengono riattivate per il normale funzionamento. Se la batteria non dovesse raggiungere nello stato manuale la soglia alta, sarà la TENSIONE DI CUTOFF ad intervenire e sesettare lo stato manuale e riportarlo al funzionamento automatico.
 
 Calibrazione: Per allineare la lettura della tensione del Dry Contact rispetto alla tensione letta sul display della batteria
-agire sul parametro. il valore 10 aumenta la lettura di 10 mV. sono ammessi anche valori negativi (-10).
+agire sul parametro. il valore 100 aumenta la lettura di 100 mV. sono ammessi anche valori negativi (-10).
+
+La connessione Wi-Fi e quindi eventuali automazioni ad esso collegate potrebbero non funzionare nel caso di assenza di connettività, per questo è stato previsto
+in tal caso il funzionamento stand alone del dispositivo con le impostazioni memorizzate.
