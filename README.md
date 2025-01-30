@@ -29,7 +29,7 @@ Collegarsi con un browser e settare i parametri "Tensione Alta, Tensione Bassa, 
 
 ![Screenshot_2025-01-09-14-38-27-692_com android chrome 2](https://github.com/user-attachments/assets/43f43b96-98fb-4c04-8b76-686de75a5c4c)
 
-Funzionamento:  Il contatto del relè è normalmente chiuso e quando la tensione della batteria raggiunge la Tensione Alta il Relè si attiva, quando la batteria scende e la tensione raggiunge la Tensione Bassa il relè si disattiva.
+Funzionamento:  Il contatto del relè è normalmente aperto e quando la tensione della batteria raggiunge la Tensione Alta il Relè si attiva, quando la batteria scende e la tensione raggiunge la Tensione Bassa il relè si disattiva.
 E' possibile attivare il relè manualmente da web oppure HA anche se la tensione della batteria non ha ancora raggiunto la
 soglia alta (funzionamento manuale). In questo stato la soglia bassa non interviene. Quando la batteria raggiunge la soglia alta lo stato manuale viene resettato e le soglie vengono riattivate per il normale funzionamento. Se la batteria non dovesse raggiungere nello stato manuale la soglia alta, sarà la TENSIONE DI CUTOFF ad intervenire e sesettare lo stato manuale e riportarlo al funzionamento automatico.
 
