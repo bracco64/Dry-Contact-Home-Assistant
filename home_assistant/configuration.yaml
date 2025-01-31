@@ -1,1 +1,3 @@
-
+homeassistant:
+  packages:
+    dry_contact: !include DryContact/dry_contact_conf.yaml
