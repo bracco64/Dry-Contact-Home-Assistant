@@ -41,7 +41,8 @@ agire sul parametro. il valore 100 aumenta la lettura di 100 mV. sono ammessi an
 La connessione Wi-Fi e quindi eventuali automazioni ad esso collegate potrebbero non funzionare nel caso di assenza di connettività, per questo è stato previsto
 in tal caso il funzionamento stand alone del dispositivo con le impostazioni memorizzate.
 
-LISTA COMPONENTI: 
+LISTA COMPONENTI:
+
 N.1 Wemos D1 R1 esp8266
 N.1 ADS1115 I2C (Convertitore A/D 16bit)
 N.1 AZ-delivery 1,3 I2C OLED DISPLAY
