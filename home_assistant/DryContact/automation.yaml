@@ -1,1 +1,34 @@
-
+- id: '1736528706383'
+  alias: switch drycontact ON
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.stato_rele_drycontact
+    to: 'On'
+    from: 'Off'
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.rele_drycontact
+  mode: single
+- id: '1736580759429'
+  alias: switch drycontact OFF
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.stato_rele_drycontact
+    to: 'Off'
+    from: 'On'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.rele_drycontact
+  mode: single
