@@ -1,1 +1,52 @@
+#mqtt:
+  sensor:
+    - name: "Tensione Batteria DryContact"
+      unique_id: "tens_batt_dry_contact_1"
+      state_topic: "dry_contact/batteria"
+      availability_topic: "dry_contact/stato"
+      unit_of_measurement: "V"
+      device_class: "Voltage"
+      
+    - name: "Tensione Alta DryContact"
+      unique_id: "tens_alta_dry_contact_1"
+      state_topic: "dry_contact/tensione_alta"
+      availability_topic: "dry_contact/stato"
+      unit_of_measurement: "V"
+      device_class: "Voltage"  
+      
+    - name: "Tensione Bassa DryContact"
+      unique_id: "tens_bassa_dry_contact_1"
+      state_topic: "dry_contact/tensione_bassa"
+      availability_topic: "dry_contact/stato"
+      unit_of_measurement: "V"
+      device_class: "Voltage"  
+      
+    - name: "Tensione Cut_Off DryContact"
+      unique_id: "tens_cut_off_dry_contact_1"
+      state_topic: "dry_contact/tensione_cutt_off"
+      availability_topic: "dry_contact/stato"
+      unit_of_measurement: "V"
+      device_class: "Voltage"   
 
+    - name: "Stato Rele DryContact"
+      unique_id: "status_rele_dry_contact_1"
+      state_topic: "dry_contact/rele"
+      availability_topic: "dry_contact/stato"
+      
+    - name: "Calibrazione DryContact"
+      unique_id: "calibrazione_dry_contact_1"
+      state_topic: "dry_contact/calibrazione"  
+      availability_topic: "dry_contact/stato"
+      
+    - name: "Stato DryContact"
+      unique_id: "stato_dry_contact_1"
+      state_topic: "dry_contact/stato"    
+
+  switch:
+    - name: "Rele DryContact"
+      unique_id: "rele_dry_contact_1"
+      state_topic: "dry_contact/rele"
+      command_topic: "dry_contact/switchHA"
+      availability_topic: "dry_contact/stato"
+      payload_on: "On"
+      payload_off: "Off"
