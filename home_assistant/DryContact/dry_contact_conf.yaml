@@ -1,0 +1,4 @@
+mqtt: !include sensor_mqtt.yaml
+automation: !include automation.yaml
+template:
+ number: !include input_number.yaml
