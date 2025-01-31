@@ -1,1 +1,58 @@
 
+    - name: "Set Tensione Alta"
+      unique_id: dry_contact_1_tensione_alta
+      state: "{{ states('sensor.tensione_alta_drycontact') }}"
+      min: 20
+      max: 60
+      step: 0.05
+      availability: "{{ not states('sensor.stato_drycontact') in ['offline', 'unavailable', 'unknown', 'none'] }}"
+      set_value:
+        - service: mqtt.publish
+          data_template:
+            topic: 'dry_contact/tensione_altaHA'
+            retain: true
+            payload: "{{ value }}"
+            
+    - name: "Set Tensione Bassa"
+      unique_id: dry_contact_1_tensione_bassa
+      state: "{{ states('sensor.tensione_bassa_drycontact') }}"
+      min: 20
+      max: 60
+      step: 0.05
+      availability: "{{ not states('sensor.stato_drycontact') in ['offline','unavailable', 'unknown', 'none'] }}"
+      set_value:
+        - service: mqtt.publish
+          data_template:
+            topic: 'dry_contact/tensione_bassaHA'
+            retain: true
+            payload: "{{ value }}"        
+            
+    - name: "Set Tensione CutOff"
+      unique_id: dry_contact_1_tensione_cutoff
+      state: "{{ states('sensor.tensione_cut_off_drycontact') }}"
+      min: 20
+      max: 60
+      step: 0.05
+      availability: "{{ not states('sensor.stato_drycontact') in ['offline','unavailable', 'unknown', 'none'] }}"
+     
+      set_value:
+        
+        - service: mqtt.publish
+          data_template:
+            topic: 'dry_contact/tensione_cut_offHA'
+            retain: true
+            payload: "{{ value }}"        
+            
+    - name: "Dry Contact Calibrazione"
+      unique_id: dry_contact_1_calibrazione
+      state: "{{ states('sensor.calibrazione_drycontact') }}"
+      min: -5000
+      max: 5000
+      step: 50
+      availability: "{{ not states('sensor.stato_drycontact') in ['offline','unavailable', 'unknown', 'none'] }}"
+      set_value:
+        - service: mqtt.publish
+          data_template:
+            topic: 'dry_contact/calibHA'
+            retain: true
+            payload: "{{ value | int }}" 
