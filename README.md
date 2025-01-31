@@ -44,6 +44,7 @@ in tal caso il funzionamento stand alone del dispositivo con le impostazioni mem
 LISTA COMPONENTI:
 
 N.1 Wemos D1 R1 esp8266
+
 N.1 ADS1115 I2C (Convertitore A/D 16bit)
 N.1 AZ-delivery 1,3 I2C OLED DISPLAY
 N.1 SSR-41FDA relè stato solido
