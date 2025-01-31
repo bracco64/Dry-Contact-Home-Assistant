@@ -1,0 +1,4 @@
+1. Aggiungere il contenuto del file configuration.yaml alla tua configurazione.
+2. Copiare la cartella DryContat nella root del tuo assistente domestico
+3. Riavviare HA
+4. Aggiungere una nuova scheda manuale sull'interfaccia incollando il contenuto del file plancia.yaml
