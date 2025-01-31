@@ -65,4 +65,4 @@ N.1 Resistenza 2.2K
 
 N.1 Condensatore 0.1
 
-
+******** Progetto "GALAXI SOLAR" 2025 by G.Abate ***********
