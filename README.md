@@ -40,3 +40,18 @@ agire sul parametro. il valore 100 aumenta la lettura di 100 mV. sono ammessi an
 
 La connessione Wi-Fi e quindi eventuali automazioni ad esso collegate potrebbero non funzionare nel caso di assenza di connettività, per questo è stato previsto
 in tal caso il funzionamento stand alone del dispositivo con le impostazioni memorizzate.
+
+LISTA COMPONENTI: 
+N.1 Wemos D1 R1 esp8266
+N.1 ADS1115 I2C (Convertitore A/D 16bit)
+N.1 AZ-delivery 1,3 I2C OLED DISPLAY
+N.1 SSR-41FDA relè stato solido
+N.1 Modulo Step-Down USB DC convertitore Buck da 9-85V a 5V
+N.2 Led
+N.1 Switch Reset
+N.3 Resistenze 1.5K
+N.1 Resistenza 100K
+N.1 Resistenza 2.2K
+N.1 Condensatore 0.1
+
+
