@@ -1,0 +1,12 @@
+type: entities
+entities:
+  - entity: sensor.tensione_batteria
+  - entity: switch.rele_drycontact
+    secondary_info: last-changed
+  - entity: number.set_tensione_alta
+  - entity: number.set_tensione_bassa
+  - entity: number.set_tensione_cutoff
+  - entity: number.dry_contact_calibrazione
+show_header_toggle: false
+state_color: false
+title: Dry Contact Wi-Fi
