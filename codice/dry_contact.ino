@@ -620,7 +620,7 @@ if (LittleFS.exists("/config.json")) {
   adc.begin();
 
 
-  if (!wifiManager.autoConnect("AutoConnectAP", "password")) {
+  if (!wifiManager.autoConnect("DryContactAP")) {
     Serial.println("failed to connect and hit timeout");
     delay(3000);
   } 
