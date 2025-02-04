@@ -1,3 +1,9 @@
+//*****************************************//
+//** Dry Contact Wi-Fi to Home Assistant **//
+//**             Versione 1.0            **//
+//**             GALAXI SOLAR            **//
+//**              31/01/2005             **//
+//*****************************************//
 #include <LittleFS.h>
 #include <ArduinoJson.h> 
 #include <Adafruit_ADS1X15.h>
