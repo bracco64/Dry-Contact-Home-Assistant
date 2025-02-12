@@ -80,6 +80,13 @@ void configModeCallback (AsyncWiFiManager *myWiFiManager) {
   Serial.println(WiFi.softAPIP());
   //if you used auto generated SSID, print it
   Serial.println(myWiFiManager->getConfigPortalSSID());
+  lcdClear();
+  lcdFontsmall();   
+  lcdPrintln(0," Connetti alla WiFi");
+  lcdPrintln(1," ** DrycontactAP **");
+  lcdPrintln(2,"  IP 192.168.4.1"); 
+  lcdPrintln(3," setta la rete WiFi");
+  lcdPrintln(4,"  e il server MQTT");
 }
 
 //flag for saving data
@@ -524,9 +531,11 @@ void setup() {
  // Aperttura Seriale
  Serial.begin(9600);
 
-  u8g2.begin();
-  lcdFontsmall();  
+  u8g2.begin();  
   lcdClear();
+  lcdFontbig();
+  lcdPrintln(0,"DRY CONTACT");
+  lcdPrintln(2,"AVVIO......");
  
  //WiFiManager
  AsyncWiFiManager wifiManager(&server,&dns);
@@ -611,6 +620,15 @@ if (LittleFS.exists("/config.json")) {
   pinMode (pinLEDWIFI, OUTPUT);
 // Setta il Pin D6 Trigger come uscita (INPUT)
   pinMode (TRIGGER_PIN, INPUT);
+  
+ // Connessione WiFi Manager
+ wifiManager.setConfigPortalTimeout(10); 
+      if(!wifiManager.autoConnect("DryContactAP")) {
+       Serial.println("connessione non riuscita nel tempo di timeout");
+       lcdClear();
+       delay(1000);
+      }
+ 
   // Messaggio di Benvenuto
   lcdClear();
   lcdFontbig();
@@ -619,20 +637,10 @@ if (LittleFS.exists("/config.json")) {
   lcdPrintln(4,"  ver. 1.0");
   delay(3000);
 
- 
-
+// Avvio ADC
   adc.setGain(GAIN_TWOTHIRDS);
   adc.begin();
-
-
-  if (!wifiManager.autoConnect("DryContactAP")) {
-    Serial.println("failed to connect and hit timeout");
-    delay(3000);
-  } 
-   
-   // Pulsante premuto all'accensione entra nella configurazione
-  chiamata_wifi_manager();
-  
+    
   // Start server mqtt
   client.setServer(mqtt_server, (int) atoi(mqtt_port));
   client.setCallback(callback);
@@ -719,7 +727,6 @@ if (LittleFS.exists("/config.json")) {
 
  // Start server
   server.begin();
-
  lcdClear();
  Serial.println("fine setup");
 }
@@ -799,13 +806,10 @@ if (stato_pin_rele == "1") {
   
 //--------------------------------  
 delay(2000);
-
 }
-
 
 ///// Stato pulsante chiamate Wifi Manager //////////
 void chiamata_wifi_manager() {
-  // is configuration portal requested?
   int statopulsante;
   if ( digitalRead(TRIGGER_PIN) == LOW ) {
    statopulsante = 0;
@@ -815,14 +819,6 @@ void chiamata_wifi_manager() {
     }
   
   if ( statopulsante == 0 ) {
-  lcdClear();
-  lcdFontsmall();   
-  lcdPrintln(0," Connetti alla WiFi");
-  lcdPrintln(1," ** DrycontactAP **");
-  lcdPrintln(2,"  IP 192.168.4.1"); 
-  lcdPrintln(3," setta la rete WiFi");
-  lcdPrintln(4,"  e il server MQTT");
-
      AsyncWiFiManagerParameter custom_mqtt_server("server", "Server IP", mqtt_server, 40);
      AsyncWiFiManagerParameter custom_mqtt_port("port", "Server port", mqtt_port, 6);
      AsyncWiFiManagerParameter custom_mqtt_user("user", "User Name", mqtt_user, 32);
@@ -830,6 +826,8 @@ void chiamata_wifi_manager() {
      AsyncWiFiManagerParameter custom_mqtt_id("id", "id mqtt", mqtt_id, 32);
 
      AsyncWiFiManager wifiManager(&server,&dns);
+
+     wifiManager.setAPCallback(configModeCallback);
 
      //set config save notify callback
      wifiManager.setSaveConfigCallback(saveConfigCallback);
@@ -839,12 +837,13 @@ void chiamata_wifi_manager() {
      wifiManager.addParameter(&custom_mqtt_user);
      wifiManager.addParameter(&custom_mqtt_passw);
      wifiManager.addParameter(&custom_mqtt_id);
-      if(!wifiManager.autoConnect("DryContactAP")) {
+       if(!wifiManager.autoConnect("DryContactAP")) {
        Serial.println("connessione non riuscita nel tempo di timeout");
        lcdClear();
        delay(1000);
       }
       //if you get here you have connected to the WiFi
+        lcdClear();
         Serial.println("connected...yeey :)");
         //read updated parameters
         strcpy(mqtt_server, custom_mqtt_server.getValue());
@@ -877,6 +876,8 @@ void chiamata_wifi_manager() {
 
   Serial.println("local ip");
   Serial.println(WiFi.localIP());
+  delay(2000);
+  ESP.reset();
   }
 }
 
